@@ -1,38 +1,26 @@
 body {
-    background-color: #293251;
-  }
-  
-  header{
-    border-bottom: 4px solid crimson;
+    background-color: #1b233f;
   }
   
   .text-center {
-    color: #f4f9ff;
+    color: rgb(236, 235, 235);
   }
-  
+  header{
+    border-bottom: 4px solid rgb(158, 20, 48);
+  }
+  .form-control{
+    width: 87%;
+    margin-right: 2px;
+    }
   .card-header{
     padding-left: 2px;
   }
   
-  .form-control{
-  width: 87%;
-  margin-right: 2px;
-  }
-  
   title {
-    color: #f4f9ff;
+    color: rgb(236, 235, 235);
   }
-  
-  .row {
-    padding-left: 10px;
-  }
-  
-  span {
-    display: inline-flex;
-  }
-  
   .container {
-    background-color: #fff;
+    background-color: rgb(230, 222, 222);
   
     display: block;
     margin: 0 auto;
@@ -41,15 +29,12 @@ body {
     padding-bottom: 50px;
     width: 90%;
   }
-  
-  .forecast-card{
-    background-color: royalblue;
-    color: white;
+  .row {
+    padding-left: 10px;
   }
   
-  .app-title {
-    height: 50px;
-    border-radius: 10px 10px 0 0;
+  span {
+    display: inline-flex;
   }
   
   .app-title p {
@@ -59,12 +44,27 @@ body {
     font-size: 1.2em;
     color: #293251;
   }
-  
-  .notification {
-    background-color: #f8d7da;
-    display: none;
+  .forecast-card{
+    background-color: royalblue;
+    color: rgb(236, 235, 235);
   }
   
+  .app-title {
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  
+  .notification {
+    background-color: #faf0f1;
+    display: none;
+  }
+  .weather-container {
+    height: 160px;
+    background-color: #f1f3f5;
+    margin-top: 20px;
+    padding: 10px;
+  }
   .notification p {
     color: #721c24;
     font-size: 1.2em;
@@ -73,17 +73,13 @@ body {
     padding: 10px 0;
   }
   
-  .weather-container {
-    height: 160px;
-    background-color: #f4f9ff;
-    margin-top: 20px;
-    padding: 10px;
-  }
-  
+
   .weather-box{
     width: 100%;
   }
-  
+  .temperature-value {
+    height: 60px;
+  }
   .weather-icon {
     height: 128px;
   }
@@ -93,13 +89,11 @@ body {
     margin: 0 auto;
   }
   
-  .temperature-value {
-    height: 60px;
-  }
+  
   
   #run-search{
-    background-color: skyblue;
-    color: white;
+    background-color: rgb(114, 188, 218);
+    color: rgb(236, 235, 235);
   }
   
   .temperature-value p {
@@ -110,7 +104,10 @@ body {
     text-align: center;
     cursor: pointer;
   }
-  
+  .temperature-value span {
+    color: #293251;
+    font-size: 0.5em;
+  }
   .forecast-container{
     padding-right: 25px;
   }
@@ -122,11 +119,14 @@ body {
   #search-card {
     padding-top: 30px;
   }
-  
-  .temperature-value span {
+  .location p {
+    margin: 0;
+    padding: 0;
     color: #293251;
-    font-size: 0.5em;
+    text-align: center;
+    font-size: 0.8em;
   }
+  
   
   .temperature-description p {
     padding: 8px;
@@ -136,23 +136,15 @@ body {
     font-size: 1.2em;
   }
   
-  .location p {
-    margin: 0;
-    padding: 0;
-    color: #293251;
-    text-align: center;
-    font-size: 0.8em;
-  }
-  
   footer{
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    color:white;
+    color:rgb(236, 235, 235);
     background-color: #293251;
     padding: 10px;
-    border-top: 4px solid crimson;
+    border-top: 4px solid rgb(158, 20, 48);
     text-align: center;
     height: 50px;
   }

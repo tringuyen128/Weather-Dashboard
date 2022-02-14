@@ -1,21 +1,22 @@
-var apiKey = "03e24d7d731fc83efc64f5aa4eb937c1";
+let apiKey = "03e24d7d731fc83efc64f5aa4eb937c1";
 
 function currentWeather(){
-  navigator.geolocation.getCurrentPosition(function (position){
-    longitude = position.coords.longitude;
+  navigator.geolocation.getCurrentPosition(position =>{
     latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+   
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" +  apiKey;
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" +  apiKey;
 
     $.ajax({
   url: queryURL,
   method: "GET"
 })
-  // We store all of the retrieved data inside of an object called "response"
-  .then(function(response) {
-    var iconCode = response.weather[0].icon;
+  
+  .then(res => {
+    let iconCode = response.weather[0].icon;
     
-    var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    let iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
     $(".city").html("<h1> " + response.name + " </h1>");
     $(".temp").text("Temperature: " + ((response.main.temp - 273.15) * 1.8 + 32).toFixed(0) + " °F");
     $(".humidity").text("Humidity: " + response.main.humidity + " %");
@@ -27,49 +28,45 @@ function currentWeather(){
 };
 
 currentWeather();
-
-////////////////////////
-
 function fiveDayForecast(){
-
-var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=San+Diego&appid=" + apiKey;
+let fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=San+Diego&appid=" + apiKey;
 $.ajax({
   url: fiveDayURL,
   method: "GET"
-}).then(function(responseTwo) {
+}).then(responseTwo => {
 
-  var icon1 = responseTwo.list[4].weather[0].icon;
-  var icon1url = "http://openweathermap.org/img/w/" + icon1 + ".png";
+  let icon1 = responseTwo.list[4].weather[0].icon;
+  let icon1url = "http://openweathermap.org/img/w/" + icon1 + ".png";
 
-  var icon2 = responseTwo.list[4].weather[0].icon;
-  var icon2url = "http://openweathermap.org/img/w/" + icon2 + ".png";
+  let icon2 = responseTwo.list[4].weather[0].icon;
+  let icon2url = "http://openweathermap.org/img/w/" + icon2 + ".png";
 
-  var icon3 = responseTwo.list[4].weather[0].icon;
-  var icon3url = "http://openweathermap.org/img/w/" + icon3 + ".png";
+  let icon3 = responseTwo.list[4].weather[0].icon;
+  let icon3url = "http://openweathermap.org/img/w/" + icon3 + ".png";
 
-  var icon4 = responseTwo.list[4].weather[0].icon;
-  var icon4url = "http://openweathermap.org/img/w/" + icon4 + ".png";
+  let icon4 = responseTwo.list[4].weather[0].icon;
+  let icon4url = "http://openweathermap.org/img/w/" + icon4 + ".png";
 
-  var icon5 = responseTwo.list[4].weather[0].icon;
-  var icon5url = "http://openweathermap.org/img/w/" + icon5 + ".png";
+  let icon5 = responseTwo.list[4].weather[0].icon;
+  let icon5url = "http://openweathermap.org/img/w/" + icon5 + ".png";
 
-  // Converts the temp to Kelvin with the below formula & then sets it to 2 decimal points
-  var tempOneF = (responseTwo.list[4].main.temp - 273.15) * 1.8 + 32;
-  var tempOne = tempOneF.toFixed(1);
-  var tempTwoF = (responseTwo.list[12].main.temp - 273.15) * 1.8 + 32;
-  var tempTwo = tempTwoF.toFixed(1);
-  var tempThreeF = (responseTwo.list[20].main.temp - 273.15) * 1.8 + 32;
-  var tempThree = tempThreeF.toFixed(1);
-  var tempFourF = (responseTwo.list[28].main.temp - 273.15) * 1.8 + 32;
-  var tempFour = tempFourF.toFixed(1);
-  var tempFiveF = (responseTwo.list[36].main.temp - 273.15) * 1.8 + 32;
-  var tempFive = tempFiveF.toFixed(1);
+  
+  let tempOneF = (responseTwo.list[4].main.temp - 273.15) * 1.8 + 32;
+  let tempOne = tempOneF.toFixed(1);
+  let tempTwoF = (responseTwo.list[12].main.temp - 273.15) * 1.8 + 32;
+  let tempTwo = tempTwoF.toFixed(1);
+  let tempThreeF = (responseTwo.list[20].main.temp - 273.15) * 1.8 + 32;
+  let tempThree = tempThreeF.toFixed(1);
+  let tempFourF = (responseTwo.list[28].main.temp - 273.15) * 1.8 + 32;
+  let tempFour = tempFourF.toFixed(1);
+  let tempFiveF = (responseTwo.list[36].main.temp - 273.15) * 1.8 + 32;
+  let tempFive = tempFiveF.toFixed(1);
 
-  var day1 = responseTwo.list[4].dt_txt;
-  var day2 = responseTwo.list[12].dt_txt;
-  var day3 = responseTwo.list[20].dt_txt;
-  var day4 = responseTwo.list[28].dt_txt;
-  var day5 = responseTwo.list[36].dt_txt;
+  let day1 = responseTwo.list[4].dt_txt;
+  let day2 = responseTwo.list[12].dt_txt;
+  let day3 = responseTwo.list[20].dt_txt;
+  let day4 = responseTwo.list[28].dt_txt;
+  let day5 = responseTwo.list[36].dt_txt;
 
   $("#day-1").html("<h5>" + day1.substr(0, 10) + "</h5>");
   $("#day-1").append("<img src=" + icon1url + ">");
@@ -101,13 +98,13 @@ $.ajax({
 fiveDayForecast();
 ////////////////////////////
 
-$("button").on("click", function(event) {
+$("button").on("click", event => {
   event.preventDefault();
-  var apiKey = "03e24d7d731fc83efc64f5aa4eb937c1";
-  var getWeather = $("#get-weather");
-  var city = getWeather.val().trim();
+  let apiKey = "03e24d7d731fc83efc64f5aa4eb937c1";
+  let getWeather = $("#get-weather");
+  let city = getWeather.val().trim();
   cities.push(city)
-  var message = document.querySelector(".invalid-message");
+  let message = document.querySelector(".invalid-message");
    
   console.log(getWeather);
 
@@ -128,23 +125,20 @@ $("button").on("click", function(event) {
     $(".search-data").prepend("<p>" + city  + "</p");
   }
   
-  var queryURL =
+  let queryURL =
     "https://api.openweathermap.org/data/2.5/weather?lat=latitude&lon=longitude&q=" +
     city + "&appid=" + apiKey;
-  // Here we run our AJAX call to the OpenWeatherMap API
-  $.ajax({
+
+    $.ajax({
     url: queryURL,
     method: "GET"
   })
-    // We store all of the retrieved data inside of an object called "response"
-    .then(function(response) {
-      // Log the queryURL
+    .then(response => {
       console.log(queryURL);
-      // Log the resulting object
       console.log(response);
-      // Transfer content to HTML
-      var iconCode = response.weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+   
+      let iconCode = response.weather[0].icon;
+      let iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
       $(".city").html("<h1>" + response.name + "</h1>");
       $(".temp").text(
         "Temperature: " +
@@ -154,15 +148,13 @@ $("button").on("click", function(event) {
       $(".humidity").text("Humidity: " + response.main.humidity + " %");
       $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
       $("#wicon").attr("src", iconurl);
-      // Converts the temp to Kelvin with the below formula
 
-      // Log the data in the console as well
       console.log("Wind Speed: " + response.wind.speed);
       console.log("Humidity: " + response.main.humidity);
       console.log("Temperature (F): " + response.main.temp);
     });
 
-  var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
+  let fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
   $.ajax({
     url: fiveDayURL,
     method: "GET"
@@ -174,41 +166,37 @@ $("button").on("click", function(event) {
     console.log(responseTwo.list[4].dt_txt);
     console.log(responseTwo.list[4].main.temp);
 
-    var icon1 = responseTwo.list[4].weather[0].icon;
-    var icon1url = "http://openweathermap.org/img/w/" + icon1 + ".png";
+    let icon1 = responseTwo.list[4].weather[0].icon;
+    let icon1url = "http://openweathermap.org/img/w/" + icon1 + ".png";
   
-    var icon2 = responseTwo.list[4].weather[0].icon;
-    var icon2url = "http://openweathermap.org/img/w/" + icon2 + ".png";
+    let icon2 = responseTwo.list[4].weather[0].icon;
+    let icon2url = "http://openweathermap.org/img/w/" + icon2 + ".png";
   
-    var icon3 = responseTwo.list[4].weather[0].icon;
-    var icon3url = "http://openweathermap.org/img/w/" + icon3 + ".png";
+    let icon3 = responseTwo.list[4].weather[0].icon;
+    let icon3url = "http://openweathermap.org/img/w/" + icon3 + ".png";
   
-    var icon4 = responseTwo.list[4].weather[0].icon;
-    var icon4url = "http://openweathermap.org/img/w/" + icon4 + ".png";
+    let icon4 = responseTwo.list[4].weather[0].icon;
+    let icon4url = "http://openweathermap.org/img/w/" + icon4 + ".png";
   
-    var icon5 = responseTwo.list[4].weather[0].icon;
-    var icon5url = "http://openweathermap.org/img/w/" + icon5 + ".png";
+    let icon5 = responseTwo.list[4].weather[0].icon;
+    let icon5url = "http://openweathermap.org/img/w/" + icon5 + ".png";
 
-    // Converts the temp to Kelvin with the below formula & then sets it to 2 decimal points
-    var tempOneF = (responseTwo.list[4].main.temp - 273.15) * 1.8 + 32;
-    var tempOne = tempOneF.toFixed(1);
-    var tempTwoF = (responseTwo.list[12].main.temp - 273.15) * 1.8 + 32;
-    var tempTwo = tempTwoF.toFixed(1);
-    var tempThreeF = (responseTwo.list[20].main.temp - 273.15) * 1.8 + 32;
-    var tempThree = tempThreeF.toFixed(1);
-    var tempFourF = (responseTwo.list[28].main.temp - 273.15) * 1.8 + 32;
-    var tempFour = tempFourF.toFixed(1);
-    var tempFiveF = (responseTwo.list[36].main.temp - 273.15) * 1.8 + 32;
-    var tempFive = tempFiveF.toFixed(1);
+    let tempOneF = (responseTwo.list[4].main.temp - 273.15) * 1.8 + 32;
+    let tempOne = tempOneF.toFixed(1);
+    let tempTwoF = (responseTwo.list[12].main.temp - 273.15) * 1.8 + 32;
+    let tempTwo = tempTwoF.toFixed(1);
+    let tempThreeF = (responseTwo.list[20].main.temp - 273.15) * 1.8 + 32;
+    let tempThree = tempThreeF.toFixed(1);
+    let tempFourF = (responseTwo.list[28].main.temp - 273.15) * 1.8 + 32;
+    let tempFour = tempFourF.toFixed(1);
+    let tempFiveF = (responseTwo.list[36].main.temp - 273.15) * 1.8 + 32;
+    let tempFive = tempFiveF.toFixed(1);
 
-    var day1 = responseTwo.list[4].dt_txt;
-    var day2 = responseTwo.list[12].dt_txt;
-    var day3 = responseTwo.list[20].dt_txt;
-    var day4 = responseTwo.list[28].dt_txt;
-    var day5 = responseTwo.list[36].dt_txt;
-
-    // var icon1Code = responseTwo.list[4].weather[0].icon;
-    // var icon1url = "http://openweathermap.org/img/w/" + icon1Code + ".png";
+    let day1 = responseTwo.list[4].dt_txt;
+    let day2 = responseTwo.list[12].dt_txt;
+    let day3 = responseTwo.list[20].dt_txt;
+    let day4 = responseTwo.list[28].dt_txt;
+    let day5 = responseTwo.list[36].dt_txt;
 
 
     $("#day-1").html("<h5>" + day1.substr(0, 10) + "</h5>");
@@ -238,10 +226,9 @@ $("button").on("click", function(event) {
   });
   
 });
-
-var cities = [];
-
+// local storage//
+let cities = [];
 function getCities(){
-  var getCity = localStorage.getItem("cities");
+  let getCity = localStorage.getItem("cities");
   console.log(getCity);
 }
